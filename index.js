@@ -1,21 +1,66 @@
-// Date objects = Objects that contain values that represent dates and times
-//                These date objects can be changed and formatted
+// closures = A function defined inside of another function,
+//            the inner function has access to the variables
+//            and scope of the outer function
+//            Allow for private variables and state maintenance
+//            Used frequently in JS frameworks: React, Vue, Angular
 
-// Date(year, month, day, hours, minutes, seconds, ms)
-const date = new Date();
+function outer() {
+  let message = "hello";
 
-const year = date.getFullYear();
-const month = date.getMonth();
-const day = date.getDate();
-const hours = date.getHours();
-const minutes = date.getMinutes();
-const dayOfWeek = date.getDay();
+  // func defined inside of outer func
+  function inner() {
+    console.log(message);
+  }
+  inner();
+}
 
-// date.setFullYear(year, month, day);
+outer();
 
-console.log(year);
-console.log(month);
-console.log(day);
-console.log(hours);
-console.log(minutes);
-console.log(dayOfWeek);
+// State maintenance:
+function createCounter() {
+  let count = 0;
+
+  function increment() {
+    count++;
+    console.log(`Count increased to ${count}`);
+  }
+
+  function getCount() {
+    return count;
+  }
+
+  return { increment, getCount };
+}
+
+const counter = createCounter();
+counter.increment();
+counter.increment();
+counter.increment();
+
+console.log(`the current count is ${counter.getCount()}`);
+
+//
+function createGame() {
+  let score = 0;
+  function increaseScore(points) {
+    score += points;
+    console.log(`+${points}pts`);
+  }
+
+  function decreaseScore(points) {
+    score -= points;
+    console.log(`-${points}pts`);
+  }
+
+  function getScore() {
+    return score;
+  }
+
+  return { increaseScore, decreaseScore, getScore };
+}
+
+const game = createGame();
+
+game.increaseScore(5);
+game.decreaseScore(3);
+console.log(`The final score is ${game.getScore()}pts`);
