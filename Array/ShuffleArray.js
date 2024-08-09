@@ -1,4 +1,7 @@
 // Shuffle An Array
+// recommend: Using a dedicated shuffle func
+//            Because in a game it's likely we're going to shuffle sth
+//            more than once throughout that game
 
 // Fisher-Yate algorithm
 
@@ -9,7 +12,7 @@ console.log(cards);
 
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
-    const random = Math.floor(Math.random() * (i + 1));
+    const random = Math.floor(Math.random() * (i + 1)); // (i + 1) nhận số ngẫu nhiễn từ 0 - i
 
     [array[i], array[random]] = [array[random], array[i]];
   }
