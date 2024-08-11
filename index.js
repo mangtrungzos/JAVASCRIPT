@@ -1,66 +1,9 @@
-// closures = A function defined inside of another function,
-//            the inner function has access to the variables
-//            and scope of the outer function
-//            Allow for private variables and state maintenance
-//            Used frequently in JS frameworks: React, Vue, Angular
+// setTimeout(() => {
+//   console.log("hello");
+// }, 3000);
 
-function outer() {
-  let message = "hello";
+const timeoutId = setTimeout(() => {
+  console.log("Hi");
+}, 3000);
 
-  // func defined inside of outer func
-  function inner() {
-    console.log(message);
-  }
-  inner();
-}
-
-outer();
-
-// State maintenance:
-function createCounter() {
-  let count = 0;
-
-  function increment() {
-    count++;
-    console.log(`Count increased to ${count}`);
-  }
-
-  function getCount() {
-    return count;
-  }
-
-  return { increment, getCount };
-}
-
-const counter = createCounter();
-counter.increment();
-counter.increment();
-counter.increment();
-
-console.log(`the current count is ${counter.getCount()}`);
-
-//
-function createGame() {
-  let score = 0;
-  function increaseScore(points) {
-    score += points;
-    console.log(`+${points}pts`);
-  }
-
-  function decreaseScore(points) {
-    score -= points;
-    console.log(`-${points}pts`);
-  }
-
-  function getScore() {
-    return score;
-  }
-
-  return { increaseScore, decreaseScore, getScore };
-}
-
-const game = createGame();
-
-game.increaseScore(5);
-game.decreaseScore(3);
-console.log(`The final score is ${game.getScore()}pts`);
+// clearTimeout(); // cancels a timeout
