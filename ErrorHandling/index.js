@@ -5,10 +5,8 @@
 
 // try { } = Encloses code that might potentially cause an error
 // catch { } = Catch and handle any thrown Erros from try { }
-// finally { } = (optional) Always executed connections, release resources
+// finally { } = (optional) Always executed. Used mostly for clean up
+//               ex. close files, close connections, release resources
 
-try {
-  console.log(x);
-} catch (error) {
-  console.log(error);
-}
+const dividend = window.prompt("Enter a dividend")
+const divisor = window.prompt("Enter a divisor")
