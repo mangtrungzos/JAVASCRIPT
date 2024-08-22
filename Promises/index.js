@@ -1,3 +1,15 @@
+// Promise = An object that manages asynchronous operations.
+//           Wrap a Promise Object around {asynchronous code}
+//           "I promise to return a value"
+//           PENDING -> RESOLVED or REJECTED
+//           new Promise((resolve, reject) => {asynchronous code})
+
+// DO THESE CHORES IN ORDER
+
+// 1. WALK THE DOG
+// 2. CLEAN THE KITCHEN
+// 3. TAKE OUT THE TRASH
+
 function walkDog() {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -37,24 +49,19 @@ function takeOutTrash() {
   });
 }
 
-// sử dụng await để đợi một Promise hoàn thành trước khi tiếp tục thực hiện các bước tiếp theo.
-// await walkDog() sẽ đợi walkDog hoàn thành trước khi gán kết quả cho walkDogResult và in ra console.
+// walkDog() được gọi trước, và nếu thành công, kết quả "You walk the dog" sẽ được in ra console. Sau đó, cleanKitchen() sẽ được gọi.
 
-async function doChores() {
-  try {
-    const walkDogResult = await walkDog();
-    console.log(walkDogResult);
-
-    const cleanKitchenResult = await cleanKitchen();
-    console.log(cleanKitchenResult);
-
-    const takeOutTrashResult = await takeOutTrash();
-    console.log(takeOutTrashResult);
-
+walkDog()
+  .then((value) => {
+    console.log(value);
+    return cleanKitchen();
+  })
+  .then((value) => {
+    console.log(value);
+    return takeOutTrash();
+  })
+  .then((value) => {
+    console.log(value);
     console.log("You finished all the chores!");
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-doChores();
+  })
+  .catch((error) => console.error(error));
