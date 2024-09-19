@@ -1,54 +1,22 @@
-//        JSON.stringify() = converts a JS object to a JSON string
-const names = ["Vu", "Trong", "Sang"];
-const person = {
-  name: "Vu",
-  age: "22",
-  isEmployed: true,
-  hobbies: ["Sports", "Cooking", "Travelling"],
-};
-const people = [
-  {
-    name: "Vu",
-    age: "22",
-    isEmployed: true,
-  },
-  {
-    name: "Sang",
-    age: "23",
-    isEmployed: false,
-  },
-  {
-    name: "Trong",
-    age: "24",
-    isEmployed: true,
-  },
-  {
-    name: "Johan",
-    age: "25",
-    isEmployed: false,
-  },
-];
+// State maintenance:
+function createCounter() {
+  let count = 0;
 
-const jsonString = JSON.stringify(people);
+  function increment() {
+    count++;
+    console.log(`Count increased to ${count}`);
+  }
 
-console.log(jsonString);
+  function getCount() {
+    return count;
+  }
 
-//        JSON.parse() = converts a JSON string to a JS object
-const jsonNames = `["Vu", "Trong", "Sang"]`;
-const jsonPerson = `{
-  name: "Vu",
-  age: "22",
-  isEmployed: true,
-  hobbies: ["Sports", "Cooking", "Travelling"],
-}`;
+  return { increment, getCount };
+}
 
-const parseData = JSON.parse(jsonNames);
+const counter = createCounter();
+counter.increment();
+counter.increment();
+counter.increment();
 
-console.log(parseData);
-
-// Fetching Data
-fetch("people.json")
-  // response.json() return a promise
-  .then((response) => response.json())
-  .then((values) => values.forEach((value) => console.log(value.name)));
-  
+console.log(`the current count is ${counter.getCount()}`);
