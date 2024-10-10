@@ -2,7 +2,7 @@
 //                       to be expanded into separate elements
 //                       (unpacks the elements)
 
-// Mở rộng thành các phần tử riêng lẻ
+// Mở rộng (giải ra một chỗ khác) thành các phần tử riêng lẻ
 // let numbers = [1, 2, 3, 4, 5];
 // let maximum = Math.max(...numbers);
 // let minimum = Math.min(...numbers);
